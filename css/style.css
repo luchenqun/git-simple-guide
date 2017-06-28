@@ -2,9 +2,15 @@ body {
 	background: #FFF;
 	font-family: Georgia, Times New Roman, Times, serif;
 	font-size: 30px;
-	text-align: center;
     margin: 0;
     padding: 0;
+}
+
+body h1, h2 {
+	text-align: center;
+}
+body p {
+
 }
 
 h1 {
@@ -35,7 +41,7 @@ h3 {
 
 p {
 	/*width: 960px;*/
-	margin: 40px auto;
+	margin: 10px 200px 10px 200px;
 	color: #000;
     line-height: 200%;
 }
