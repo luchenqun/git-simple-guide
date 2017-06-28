@@ -29,8 +29,8 @@
 	</head>
 	<body>
 		<div class="scrollblock block-title">
-			<h1>git - 简明指南</h1>
-			<p style="text-align:center;">●'◡'● 帮助从未使用过Git的同学入门Git，木有高深内容 ●'◡'●</p>
+			<h1>git - 简明操作指南</h1>
+			<p style="text-align:center;">●'◡'● 帮助从未使用过Git的同学入门，木有高深内容 ●'◡'●</p>
 			<!-- <p class="meta">
 				作者：<a href="http://www.twitter.com/rogerdudler">罗杰·杜德勒</a>
 				<br/>感谢：<a href="http://www.twitter.com/tfnico">@tfnico</a>,
@@ -66,7 +66,8 @@
 			</p>
 			<p>
 				安装完成之后，在控制台界面下输入
-				<code>git --version</code>。<br/>若显示<code>git version 2.x.x</code>，则表示安装成功！</p>
+				<code>git --version</code>。<br/>若显示git version 2.x.x，则表示安装成功！</p>
+			<p>确认安装成功，使用命令<code>git config --global user.name "YouEmail"</code>，邮箱建议使用公司邮箱。设置一下你的邮箱，使用命令<code>git config --global user.name "YouName"</code>设置一下你的用户名，用户名建议使用全拼小写。</p>
 		</div>
 		<a name="key"></a>
 		<div class="scrollblock block-key">
@@ -74,7 +75,7 @@
 			<p>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、检查是否存在密钥：<code>cd ~/.ssh && ls
 				</code>
-				如果有 id_rsa，id_rsa.pub 两个文件存在，那么已生成Key。直接进入第3步。
+				如果有 id_rsa，id_rsa.pub 两个文件存在，那么已生成密钥。直接进入第3步。
 			</p>
 			<p>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、生成密钥：如果用第一步的方法检测到你的系统没有key。执行
@@ -96,7 +97,7 @@
 		<div class="scrollblock block-checkout">
 			<h2>克隆代码</h2>
 			<p>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进入Gitlab上面你需要克隆的项目，复制该项目的SSH的url，执行类似如下命令：<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进入Gitlab上面你需要克隆的项目，复制该项目的SSH的url，执行类似如下命令：
 				<code>git clone git@192.168.9.66:lcq/my-bookmark.git</code>
 			</p>
 		</div>
@@ -104,7 +105,7 @@
 		<div class="scrollblock block-trees">
 			<h2>工作流</h2>
 			<p>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你的本地仓库由 git 维护的三棵“树”组成。第一个是你的<code>工作目录</code>，它持有实际文件；<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你的本地仓库由 git 维护的三棵"树"组成。第一个是你的<code>工作目录</code>，它持有实际文件；<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二个是<code>暂存区（Index）</code>，它像个缓存区域，临时保存你的改动；<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最后是<code>HEAD</code>，它指向你最后一次提交的结果。<br/>
 			</p>
@@ -128,7 +129,7 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;执行如下命令以将这些改动提交到远端仓库：<code>git push origin master</code><br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以把<i>master</i>换成你想要推送的任何分支。<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不过，一般使用<code>git push</code>即可，它默认推送当前分支到服务器。<br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当然，如果服务器上有比你本地更新的代码，那么推送就会失败，你必须先合并服务器上代码才能进行推送。
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当然，如果服务器上有比你本地更新的代码，那么推送就会失败，你必须先执行命令<code>git pull</code>合并服务器上代码才能进行推送。
 			</p>
 		</div>
 		<a name="update"></a>
@@ -149,7 +150,7 @@
 			<h2>分支</h2>
 			<p>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分支是用来将特性开发绝缘开来的。在你创建仓库的时候，<i>master</i>
-				是“默认的”分支。在其他分支上进行开发，完成后再将它们合并到主分支上。假设我们以已存在的develop为开发分支为例。你现在想要开发一个新功能，想以develop分支为基础，创建一个叫做“feature_x”的分支。大概需要进行如下几步：
+				是"默认的"分支。在其他分支上进行开发，完成后再将它们合并到主分支上。假设我们以已存在的develop为开发分支为例。你现在想要开发一个新功能，想以develop分支为基础，创建一个叫做"feature_x"的分支。大概需要进行如下几步：
 			</p>
 			<div style="text-align:center;"><img src="img/branches.png" alt=""/></div>
 			<p>
@@ -169,99 +170,55 @@
 		<div class="scrollblock block-tagging">
 			<h2>标签</h2>
 			<p>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为软件发布创建标签是推荐的。你可以执行如下命令创建一个叫做
-				<i>1.0.0</i>
-				的标签：<code>git tag 1.0.0 1b2e1d63ff</code><br/>
-				<i>1b2e1d63ff</i>
-				是你想要标记的提交 ID 的前 10 位字符。可以使用下列命令获取提交 ID：<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;释放版本的时候你可以执行如下命令创建一个叫做
+				<i>v1.0.0</i>的标签：<code>git tag v1.0.0 1b2e1d63ff</code><br/>
+				<i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1b2e1d63ff</i>是你想要标记的提交 ID 的前 10 位字符。可以使用下列命令获取提交 ID：<br/>
 				<code>git log</code><br/>
-				你也可以使用少一点的提交 ID 前几位，只要它的指向具有唯一性。
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当然，你也可以使用少一点的提交 ID 前几位，只要它的指向具有唯一性。
 			</p>
 		</div>
 		<a name="log"></a>
 		<div class="scrollblock block-log">
-			<h2>log</h2>
+			<h2>查看提交日志</h2>
 			<p>
-				如果你想了解本地仓库的历史记录，最简单的命令就是使用:
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果你想了解本地仓库的历史记录，最简单的命令就是使用:
 				<code>git log</code><br/>
-				你可以添加一些参数来修改他的输出，从而得到自己想要的结果。
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你可以添加一些参数来修改他的输出，从而得到自己想要的结果。
 				<br/>
-				只看某一个人的提交记录:<code>git log --author=bob</code><br/>
-				这些只是你可以使用的参数中很小的一部分。更多的信息，参考：
-				<code>git log --help</code><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;比如只看某一个人lcq的提交记录:<code>git log --author=lcq</code><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这些只是你可以使用的参数中很小的一部分。更多的信息，参考：<code>git log --help</code><br/>
 			</p>
 		</div>
 		<a name="checkout-replace"></a>
 		<div class="scrollblock block-checkout-replace">
 			<h2>替换本地改动</h2>
 			<p>
-				假如你操作失误（当然，这最好永远不要发生），你可以使用如下命令替换掉本地改动：<br/>
-				<code>git checkout -- &lt;filename&gt;</code><br/>
-				此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到暂存区的改动以及新文件都不会受到影响。
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;假如你操作失误或其他原因，你可以使用如下命令替换掉本地改动：
+				<code>git checkout &lt;filename&gt;</code>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到暂存区的改动以及新文件都不会受到影响。
 			</p>
 			<p>
-				假如你想丢弃你在本地的所有改动与提交，可以到服务器上获取最新的版本历史，并将你本地主分支指向它：<br/>
-				<code>git fetch origin</code><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;假如你想丢弃你在本地的master分支所有改动与提交，此种情况也是有可能的，比如你前天晚上在家里对master分支写了一些代码，但是没有提交到服务器。你第二天到公司继续做然后提交到服务器，晚上回家你只想用服务器上最新的代码即可。你可以使用如下两个命令获取服务器上最新的版本历史，并将你本地主分支指向它：
+				<code>git fetch</code>
 				<code>git reset --hard origin/master</code>
 			</p>
 		</div>
 		<a name="hints"></a>
 		<div class="scrollblock block-hints">
-			<h2>实用小贴士</h2>
+			<h2>其他常用功能简介</h2>
 			<p>
-				内建的图形化 git：<br/>
-				<code>gitk</code><br/>
-				彩色的 git 输出：<br/>
-				<code>git config color.ui true</code><br/>
-				显示历史记录时，每个提交的信息只显示一行：<br/>
-				<code>git config format.pretty oneline</code><br/>
-				交互式添加文件到暂存区：<br/>
-				<code>git add -i</code>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、可以使用 .gitignore 文件配置不需要加入版本管理的文件，比如Visual Studio编译C++生成的*.obj文件。放心，不要你去写，有人专门写了一些这样的模板文件。详见链接<a href="https://github.com/github/gitignore" target="_blank">Gitignore</a>
 			</p>
+			<p>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、Git去将来。我们可以使用<code>git log</code>查看我提交的日志。然后使用<code>git reset --hard &lt;commitId&gt;</code>回退到你之前代码提交的状态。这个时候，你想从当前的状态"穿越"到前面的状态去，这个时候你使用<code>git log</code>是无法查看到"未来"的commitId的。此时，你可以使用<code>git reflog</code>命令，它将你所有的操作都记录下来了。
+			</p>
+			<p>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、Git暂存更改。假设有这种情况。我在我的feature_x分支上做我的开发，这个时候，我需要切换到develop分支查看某些代码。但是我在feature_x分支上有改动，因为你没有git commit存到HEAD区，这个时候切换分支会造成你的改动全部丢失，所以Git是不允许你这么做的，但是我又不想做git commit操作。你可以使用<code>git stash</code>将本地更改暂存起来，然后切换到develop分支，回到feature_x分支再使用<code>git stash pop</code>将暂存的文件弹出来即可。</p>
+			<p>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、找出"罪魁祸首"。当事情出错时，先去指责别人是人类的天性之一。如果你的产品出问题了，使用<code>git blame &lt;filename&gt;</code>命令可以很容易找出罪魁祸首。这个命令可以将文件中的每一行的作者、最新的变更提交和提交时间展示出来。此操作慎用！</p>
 		</div>
 		<a name="resources"></a>
 		<div class="scrollblock block-resources">
 			<h2>链接与资源</h2>
-			<h3>图形化客户端</h3>
-			<p>
-				<ul>
-					<li>
-						<a href="http://gitx.laullon.com/">GitX (L) (OSX, 开源软件)</a>
-					</li>
-					<li>
-						<a href="http://www.git-tower.com/">Tower (OSX)</a>
-					</li>
-					<li>
-						<a href="http://www.sourcetreeapp.com/">Source Tree (OSX, 免费)</a>
-					</li>
-					<li>
-						<a href="http://mac.github.com/">GitHub for Mac (OSX, 免费)</a>
-					</li>
-					<li>
-						<a href="https://itunes.apple.com/gb/app/gitbox/id403388357?mt=12">GitBox (OSX, App Store)</a>
-					</li>
-				</ul>
-			</p>
-			<h3>指南和手册</h3>
-			<p>
-				<ul>
-					<li>
-						<a href="http://book.git-scm.com/">Git 社区参考书</a>
-					</li>
-					<li>
-						<a href="http://progit.org/book/">专业 Git</a>
-					</li>
-					<li>
-						<a href="http://think-like-a-git.net/">像 git 那样思考</a>
-					</li>
-					<li>
-						<a href="http://help.github.com/">GitHub 帮助</a>
-					</li>
-					<li>
-						<a href="http://marklodato.github.io/visual-git-guide/index-zh-cn.html">图解 Git</a>
-					</li>
-				</ul>
-			</p>
 		</div>
 	</body>
 </html>

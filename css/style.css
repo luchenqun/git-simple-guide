@@ -148,6 +148,10 @@ code {
 .block-tagging h2 { color: #FFF; }
 .block-hints { background-color: #F2F2F2; }
 .block-hints h2 { color: #FFF; }
+.block-hints a { color: #000; font-size: 30px; font-weight: normal;font-style: normal; padding: 10px 15px; border-radius: 10px; text-decoration: none; }
+.block-hints span { color: #000; font-size: 40px; font-weight: normal;font-style: normal; background-color: #06406c; padding: 10px 15px; border-radius: 10px; text-decoration: none; }
+.block-hints a:hover { text-decoration: underline; }
+
 .block-resources { background-color: #ffc19f; }
 .block-resources h2 { color: #cc4037; }
 .block-resources h3 { color: #7d1f19; }
