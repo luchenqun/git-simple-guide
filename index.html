@@ -211,7 +211,7 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、可以使用 .gitignore 文件配置不需要加入版本管理的文件，比如Visual Studio编译C++生成的*.obj文件。放心，不要你去写，有人专门写了一些这样的模板文件。详见链接<a href="https://github.com/github/gitignore" target="_blank">Gitignore</a>
 			</p>
 			<p>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、Git去将来。我们可以使用<code>git log</code>查看我提交的日志。然后使用<code>git reset --hard &lt;commitId&gt;</code>回退到你之前代码提交的状态。这个时候，你想从当前的状态"穿越"到前面的状态去，这个时候你使用<code>git log</code>是无法查看到"未来"的commitId的。此时，你可以使用<code>git reflog</code>命令，它将你所有的操作都记录下来了。
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、Git去将来。我们可以使用<code>git log</code>查看我提交的日志。然后使用<code>git reset --hard &lt;commitId&gt;</code>回退到你之前代码提交的状态。这个时候，你想从当前的状态"穿越"到前面的状态去，你使用<code>git log</code>是无法查看到"未来"的commitId的。此时，你可以使用<code>git reflog</code>命令，它将你所有的操作都记录下来了。
 			</p>
 			<p>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、Git暂存更改。假设有这种情况。我在我的feature_x分支上做我的开发，这个时候，我需要切换到develop分支查看某些代码。但是我在feature_x分支上有改动，因为你没有git commit存到HEAD区，这个时候切换分支会造成你的改动全部丢失，所以Git是不允许你这么做的，但是我又不想做git commit操作。你可以使用<code>git stash</code>将本地更改暂存起来，然后切换到develop分支，回到feature_x分支再使用<code>git stash pop</code>将暂存的文件弹出来即可。</p>
