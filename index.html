@@ -40,7 +40,7 @@
 				Linux以Ubuntu 16.04为例。
 			</p>
 			<p>安装完成之后，在控制台界面下输入<code>git --version</code>。若显示git version 2.x.x，则表示安装成功！</p>
-			<p>确认安装成功，使用命令<code>git config --global user.email "youemail@juzix.io"</code>，邮箱建议使用公司邮箱。<br/>使用命令<code>git config --global user.name "youname"</code>设置一下你的用户名，用户名建议使用你名字全拼小写。</p>
+			<p>确认安装成功，使用命令<code>git config --global user.email "youemail@juzix.io"</code>设置一下你的邮箱，邮箱建议使用公司邮箱。<br/>使用命令<code>git config --global user.name "youname"</code>设置一下你的用户名，用户名建议使用你名字全拼小写。</p>
 		</div>
 		<a name="key"></a>
 		<div class="scrollblock block-key">
@@ -196,7 +196,7 @@
 			<h2>替换本地改动</h2>
 			<p>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;假如你操作失误或其他原因，你可以使用如下命令替换掉本地改动：
-				<code>git checkout &lt;filename&gt;</code>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到暂存区的改动以及新文件都不会受到影响。
+				<code>git checkout -- &lt;filename&gt;</code>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到暂存区的改动以及新文件都不会受到影响。记得加--，否则有可能切换到某个分支去了！
 			</p>
 			<p>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;基于checkout的作用，我们还可以把他用到解决当合并发生冲突的时候。比如合并完成之后，文件filenameA与filenameB均发生了冲突。但是你确定fileNameA我需要用我自己的最新的，这时候你可以执行<code>git checkout --ours &lt;filenameA&gt;</code>，如果确定文件filenameB使用别人的，那么执行<code>git checkout --theirs &lt;filenameA&gt;</code>即可！
